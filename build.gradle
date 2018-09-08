@@ -1,0 +1,43 @@
+group 'com.github.kingbbode'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "http://nexus.woowa.in/content/groups/public" }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE"
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.2.0'
+    }
+}
+
+configure(subprojects) {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: 'org.junit.platform.gradle.plugin'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        testCompile("org.junit.jupiter:junit-jupiter-api:5.2.0")
+        testCompile("org.junit.jupiter:junit-jupiter-params:5.2.0")
+        testRuntime("org.junit.jupiter:junit-jupiter-engine:5.2.0")
+        testRuntime("org.junit.platform:junit-platform-launcher:1.2.0")
+        testRuntime("org.junit.jupiter:junit-jupiter-engine:5.2.0")
+        testRuntime("org.junit.vintage:junit-vintage-engine:5.2.0")
+    }
+}

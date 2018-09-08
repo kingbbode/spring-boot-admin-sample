@@ -1,0 +1,14 @@
+
+dependencies {
+    dependencies {
+        compile('org.springframework.boot:spring-boot-starter-web')
+        compile('org.springframework.boot:spring-boot-starter-security')
+        compile('de.codecentric:spring-boot-admin-server:2.0.2')
+        compile('de.codecentric:spring-boot-admin-server-ui:2.0.2')
+        /**
+         * CLOUD 모드(eureka)를 사용하려면 아래를 활성화 하면 될 듯
+         * - admin-server-cloud를 포함하고 있다.
+         */
+        //compile('de.codecentric:spring-boot-admin-starter-server:2.0.2')
+    }
+}

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: kingbbode-boot-admin-sample
+  mvc:
+      static-path-pattern: /static/**
+  security:
+      user:
+        name: "kingbbode"
+        password: "kingbbode"
+  boot:
+    admin:
+      ui:
+        brand: <img src="static/assets/img/woowahan.png"><span>Woowahan Boot Admin</span>
+        title: Woowahan Boot Admin

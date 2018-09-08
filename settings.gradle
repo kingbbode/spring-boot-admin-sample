@@ -1,0 +1,4 @@
+rootProject.name = 'admin-sample'
+include 'client'
+include 'server'
+

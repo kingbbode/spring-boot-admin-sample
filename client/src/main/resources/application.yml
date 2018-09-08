@@ -1,0 +1,54 @@
+server:
+  tomcat:
+    max-threads: 1
+
+---
+spring:
+  profiles: cache, logging
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080
+        username: "kingbbode"
+        password: "kingbbode"
+        instance:
+          service-url: http://localhost
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+  server:
+    address: localhost
+
+---
+spring:
+  profiles: cache
+  cache:
+      jcache:
+        config: classpath:ehcache3.xml
+        provider: org.ehcache.jsr107.EhcacheCachingProvider
+  application:
+    name: kingbbode-cache-client
+server:
+  port: 8989
+management:
+  server:
+    port: 9898
+
+---
+spring:
+  profiles: logging
+  application:
+    name: kingbbode-logging-client
+server:
+  port: 8585
+management:
+  server:
+    port: 5858
+logging:
+  file: app.log

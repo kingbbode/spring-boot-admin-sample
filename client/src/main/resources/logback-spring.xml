@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <springProfile name="cache,logging,test">
+        <include resource="org/springframework/boot/logging/logback/base.xml"/>
+        <include resource="application-appender.xml"/>
+        <logger name="com.github.kingbbode" level="DEBUG"/>
+        <root level="INFO">
+            <appender-ref ref="APPLICATION"/>
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+</configuration>

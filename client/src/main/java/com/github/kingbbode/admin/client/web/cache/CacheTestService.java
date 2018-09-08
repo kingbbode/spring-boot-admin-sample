@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
 @Profile("cache")
 @RequiredArgsConstructor
@@ -15,12 +15,17 @@ import java.util.List;
 @Slf4j
 public class CacheTestService {
 
+    public static final String CACHE_NAME = "test";
     private final TestEntityRepository testEntityRepository;
 
-    @Cacheable("test")
-    public List<TestEntity> get() {
+    @Cacheable(cacheNames = CACHE_NAME, key = "'test'")
+    public TestEntityListDto get() {
         log.info("[Cache] cache refresh!!");
-        return testEntityRepository.findAll();
+        return TestEntityListDto.builder()
+                .ids(testEntityRepository.findAll().stream()
+                        .map(TestEntity::getId)
+                        .collect(Collectors.toList())
+                ).build();
     }
 
     @Scheduled(fixedDelay = 4_000)

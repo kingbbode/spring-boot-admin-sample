@@ -17,7 +17,7 @@ public class CacheTestController {
 
     @GetMapping("/cache")
     public ResponseEntity<String> cache() {
-        int size = cacheTestService.get().size();
+        int size = cacheTestService.get().getIds().size();
         log.info("[Cache][Request] find list size={}", size);
         return ResponseEntity.ok("OK");
     }

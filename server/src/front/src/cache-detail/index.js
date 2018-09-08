@@ -7,15 +7,9 @@ SBA.use({
             parent: 'instances',
             path: 'cache-detail',
             component: customEndpoint,
-            label: 'Custom',
+            label: 'TEST CACHE',
             order: 1000,
-            isEnabled: ({instance}) => {
-                console.log('instance', instance);
-                console.log('instance', instance.hasEndpoint);
-                console.log('instance', instance.hasEndpoint('cache-detail'));
-
-                return instance.hasEndpoint('cache-detail')
-            }
+            isEnabled: ({instance}) => instance.hasEndpoint('cache-detail')
     });
     }
 });

@@ -38,17 +38,15 @@
             }
         }),
         created() {
-            this.fetch()
+            this.fetch();
+            const vm = this;
+            return timer(0, 2000)
+                .subscribe(val => vm.fetch());
         },
         methods: {
             async fetch() {
                 const response = await this.instance.axios.get('actuator/cache-detail');
                 this.caches = response.data;
-            },
-            createSubscription() {
-                const vm = this;
-                return timer(0, 2000)
-                    .subscribe(val => vm.fetch());
             }
         }
     };

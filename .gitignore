@@ -45,3 +45,4 @@ classes
 rebel*.xml
 *.log.*
 out
+src/main/resources/META-INF/spring-boot-admin-server-ui/extensions/custom

@@ -17,7 +17,6 @@ public class CacheTestEndPoint {
         this.cacheManager = cacheManager;
     }
 
-
     @ReadOperation
     public TestEntityListDto cache() {
         return Optional.ofNullable(this.cacheManager.getCache(CACHE_NAME))

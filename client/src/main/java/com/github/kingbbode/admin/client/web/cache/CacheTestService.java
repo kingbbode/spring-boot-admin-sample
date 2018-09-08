@@ -21,9 +21,14 @@ public class CacheTestService {
     @Cacheable(cacheNames = CACHE_NAME, key = "'test'")
     public TestEntityListDto get() {
         log.info("[Cache] cache refresh!!");
+
         return TestEntityListDto.builder()
-                .ids(testEntityRepository.findAll().stream()
-                        .map(TestEntity::getId)
+                .data(testEntityRepository.findAll().stream()
+                        .map(data -> TestEntityListDto.TestEntityDto.builder()
+                                .id(data.getId())
+                                .text(data.getText())
+                                .build()
+                        )
                         .collect(Collectors.toList())
                 ).build();
     }
